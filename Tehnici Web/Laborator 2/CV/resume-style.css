@@ -1,0 +1,103 @@
+.title
+{
+    font-family: "Lato";
+    font-size:38px;
+    font-weight:700;
+    margin:0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.subtitle
+{
+    color:#999;
+    margin-bottom:1em;
+    font-family:"Lato";
+    font-size:1.5em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1em;
+}
+
+.menu
+{
+    length: 990px;
+    margin:80px auto 0 auto;
+    text-align: center;
+}
+
+.menu-item
+{
+    margin-right:10px;
+    display:inline-block;
+    margin-left:20px;
+    padding: 10px 40px 10px 40px;
+    background-color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: "Lato";
+    font-size:14px;
+    color:#999;
+    vertical-align: bottom;
+}
+.menu-item-active
+{
+    margin-top:0;
+    padding: 15px 40px 15px 40px;
+    color:#c0392b;
+    bottom:-1px;
+    position: relative;
+}
+
+hr{
+    margin-bottom:25px;
+    border: 1px solid #f1f1f1;
+}
+
+.resume-title
+{
+    font-weight: bold;
+    font-size:32px;
+}
+.skill:nth-child(1)
+{
+    background-image: linear-gradient(135deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); 
+    background-size: 5rem 5rem;
+}
+
+.resume-info
+{
+    display:inline;
+}
+
+.resume-date{
+    text-align:right;
+}
+
+.resume-date:nth-child(1)
+{
+    background-color: aqua;
+}
+.resume-date:nth-child(2)
+{
+    background-color: aqua;
+}
+.resume-date:nth-child(3)
+{
+    background-color: aqua;
+}
+.resume-date:nth-child(4)
+{
+    background-color: red;
+}
+.resume-date:nth-child(5)
+{
+    background-color: green;
+}
+.resume-date:nth-child(6)
+{
+    background-color: orange;
+}
+
+

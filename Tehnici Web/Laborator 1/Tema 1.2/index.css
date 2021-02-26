@@ -1,0 +1,11 @@
+body {
+    background-image: url('wh-gal.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+    
+.test
+    {
+    color: purple;
+    padding: 10px;
+    }

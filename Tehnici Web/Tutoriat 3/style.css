@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    list-style-type: none;
+    background: yellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #000;
+    padding: 0 15px;
+}
+
+.aliniat-la-stanga {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.aliniat-la-dreapta {
+    display: flex;
+    align-items: center;
+}
+
+.navbar > .aliniat-la-stanga > li:nth-child(1) > a {
+    font-size: 30px;
+}
+
+body {
+    background: red;
+}
+
+main {
+    height: 3000px;
+    background: aliceblue;
+}
+
+header {
+    top: 0;
+    position: sticky;
+    width: 100%;
+}
+
+@media only screen and (max-width: 376px) {
+    .navbar, .aliniat-la-stanga, .aliniat-la-dreapta {
+        flex-direction: column !important;
+    }
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: green;
+    min-width: 10%;
+}
+
+.dropdown-content span {
+    color: #fff;
+    padding: 15px 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content > span:hover {
+    color: #000;
+}
+
+.dropdown-span:hover {
+    background: red;
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <title>EXTRA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/stylejs.css">
+    <script src="js/index.js"></script>
+    <meta name="description" content="Cupa Mondiala. O competitie sportiva cu traditie si multi fani.">
+    <meta name="keywords" content="FIFA, World, Cup, Fifa World Cup, Football, History, Ball, Competition">
+    <script src="js/Examen2.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1 class="titlu">Cupa Mondiala</h1>
+    </header>
+    <nav class="menu">
+        <a class="menu-item" href="index.html">Acasa</a>
+        <div class="dropdown">
+        <div class="dropbtn">Mai multe despre Cupa Mondiala</div>
+            <div class="dropdown-content">
+                <a href="golgheteri.html">Golgheteri</a>
+                <a href="finale.html">Finale</a>
+                <a class="menu-item-active" href="js.html">Extra</a>
+                <a href="examen.html">Extra Extra Examen</a>
+            </div>
+        </div> 
+        
+    </nav>
+<div class="resume-container">
+    <button type="button" onclick="timeout()" id="button-time">GOOOOOOOL</button>
+    <button type="button" onclick="interval()" id="button-time">REPLAY</button>
+    <br>
+    <br>
+    <h1>Quiz-ul Cupei Mondiale!</h1>
+    <form id = "quiz" name = "quiz">
+        <p class = "questions">Cine este golgheterul competitiei (all-time)?</p>
+        <input type = "radio" id = "mc" name = "question1" value = "Just Fontaine">Just Fontaine<br>
+        <input type = "radio" id = "mc" name = "question1" value = "Ronaldo Nazário">Ronaldo Nazário<br>
+        <input type = "radio" id = "mc" name = "question1" value = "Cristiano Ronaldo">Cristiano Ronaldo<br>
+
+        <p class = "questions">Cate goluri a inscris acest jucator?</p>
+        <input id = "textbox" type = "text" name = "question2">
+
+        <p class = "questions">Cine a castigat competitia in anul 2018?</p>
+        <input type = "radio" id = "mc" name = "question3" value = "Croatia">Croatia<br> 
+        <input type = "radio" id = "mc" name = "question3" value = "Franta">Franta<br>
+
+        <p class = "questions">Iti place acest site?</p>
+        <input type = "radio" id = "mc" name = "question4" value = "Da">Da<br> 
+        <input type = "radio" id = "mc" name = "question4" value = "Nu">Nu<br>
+
+        <p class = "questions">Cine a pierdut competitia in 1930? (prima editie)</p>
+        <input type = "radio" id = "mc" name = "question5" value = "Franta">Franta<br> 
+        <input type = "radio" id = "mc" name = "question5" value = "Argentina">Argentina<br>
+
+        <p class = "questions">Care este primul titlu al primei pagini?</p>
+        <input type = "radio" id = "mc" name = "question6" value = "Corect">Cat de importanta este Cupa Mondiala?<br> 
+        <input type = "radio" id = "mc" name = "question6" value = "Gresit">Ce este Cupa Mondiala?<br>
+        <br>
+        <button type="button" onclick="myFunction()" value = "Gata" id="button">Gata</button>
+    </form>
+    <div id = "after_submit">
+        <p id = "number_correct"></p>
+        <p id = "message"></p>
+        <img id = "picture">
+    </div>
+    
+</div>
+</body>
+</html>
