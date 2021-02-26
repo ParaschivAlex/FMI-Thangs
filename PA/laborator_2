@@ -1,0 +1,262 @@
+# L2.E1
+""" sir=input()
+prost=input()
+bun=input()
+sir=sir.replace(prost,bun)
+print (sir)"""
+# L2.E2
+"""sir=input()
+sir2=""
+for i in range (len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        sir2+=sir[i].upper()
+    else:
+        sir2+=sir[i]
+print(sir2)"""
+#L2.E3
+"""sir=input()
+s=input()
+d=input()
+sir2=""
+k=0
+for i in range (len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        k=i
+    if (i!=len(sir)-1):
+
+        if (sir[i+1]==" "):
+            l=i
+            if (sir[k:l+1]==s):
+                sir2+=d+" "
+            else:
+                sir2+=sir[k:l+1]+" "
+    elif(i==len(sir)-1):
+        l=i
+        if (sir[k:l+1]==s):
+            sir2+=d+" "
+        else:
+            sir2+=sir[k:l+1]+" "
+
+print (sir2)
+"""
+#L2.E4
+"""sir=input()
+sir2=input()
+if (len(sir)!=len(sir2)):
+    print("Nu")
+else:
+    for ch in (sir):
+        if (ch in sir2):
+            sir2=sir2.replace(ch,"",1)
+    if (sir2):
+        print("Nu")
+    else:
+        print("Da")
+"""
+#L2.E5
+""""
+sir=input()
+sir2=""
+k=int(input())
+for ch in (sir):
+    if (ch.isupper()):
+        sir2+=chr((ord(ch)+k-ord("A")%26)+ord('A')
+    else:
+        sir2+=chr((ord(ch)+k-ord('a'))%26+ord('a'))
+"""
+#L2.E6
+"""
+sir="Ana are 20 lei si 30 lei"
+actual=""
+suma=0
+i=0
+while (i<len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        if (sir[i].isdigit()):
+            k=i
+            while (sir[i+1]!=" " and i!=len(sir)-1):
+                i+=1
+            actual=sir[k:i+1]
+            actual=int(actual)
+            suma+=actual
+            actual=str(actual)
+            actual=""
+    i+=1
+print (suma)
+
+"""
+ #L2.E7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#L2.E8
+#a) i)
+"""
+sir="Ana are mere"
+sir2=""
+for i in range(len(sir)):
+    if (sir[i] in "aeiouAEIOU"):
+        sir2+=sir[i]+"p"+sir[i]
+    else:
+        sir2+=sir[i]
+print(sir2)"""
+#a) ii)
+"""
+sir="ApAnapa aparepe meperepe"
+sir2=""
+i=0
+while (i<len(sir)):
+    if(sir[i-1] in "aeiouAeiou" and sir[i]=='p' and sir[i+1]==sir[i-1]):
+        i+=1
+    else:
+        sir2+=sir[i]
+    i+=1
+print(sir2)
+"""
+#b)
+"""
+sir="A-na a-re mul-te me-re ro-sii si de-li-cioa-se."
+sir2=""
+i=0
+while (i<len(sir)):
+    if (i!=len(sir)-1):
+        if(sir[i+1]=="-" or sir[i+1]==" " or i==len(sir)-2):
+            sir2+=sir[i]+"p"+sir[i].lower()
+        else:
+            sir2+=sir[i]
+    i+=1
+print(sir2)
+
+i=0
+while (i<len(sir2)):
+    if (sir2[i]!="-"):
+        print(sir2[i],end="")
+    i+=1
+"""
+#L2.9
+"""
+sir="Eu am de gând să vând vaza aceasta pentru $5. Ce plăcut, chiar mi-ar plăcea să o achiziționez,doar că am numai $3 la mine. Este suficient? Nu, insist să obțin 5$ pe ea. Bine, atunci voi scoate niște bani și-ți aduc cei  $5."
+valf1,valf2="",""
+i=0
+schimb=1
+nr=0
+while (i<len(sir)):
+    if(sir[i].isdigit()):
+        k=i
+        nr+=1
+        while (sir[i].isdigit()):
+            i+=1
+            l=i
+        if(schimb==1):
+            valf1=int(sir[k:i])
+            schimb=0
+        else:
+            valf2=int(sir[k:i])
+            schimb=1
+    if (nr==2 and i==l):
+        print(valf1,valf2)
+    i+=1
+print (valf1,valf2)
+if (valf1==valf2):
+    print ("s-au inteles")
+else:
+    print("nu s-au inteles")
+"""
+#L2.10
+"""
+sir="Ana Maria"
+nr=0
+nr2=0
+i=0
+p1=0
+for i in range (len(sir)):
+    if (sir[i-1]==" " or sir[i-1]=="-" or i==0):
+        if (sir[i].islower()):
+            print("nume fals")
+            break
+    if (sir[i]=="-"):
+        nr+=1
+    if (nr>1):
+        print("nume fals")
+        break
+    if (sir[i]==" " or sir[i]=="-"):
+        if (i-p1<3):
+            print ("nume fals")
+            break
+        p1=i
+    if (sir[i].isalnum()==False and sir[i]!="-"):
+        print("nume fals")
+        break
+    if (sir[i].isdigit()):
+        print("nume fals")
+        break
+    if (sir[i]==" "):
+        nr2+=1
+    if (nr2>1):
+        print("nume fals")
+        break
+    print (i)
+else:
+    print("Nume corect")
+"""
+#L2.11
+"""
+sir="A venit mama.A plecat tata.A venit iarna."
+lista=[]
+i=0
+p=0
+for i in range(len(sir)):
+    if(i!=len(sir)-1):
+        if(sir[i]=="." and sir[i+1].isupper()):
+            lista.append(sir[p:i+1])
+            p=i+1
+    else:
+        lista.append(sir[p:i+1])
+print(lista)
+"""
+#L2.12
+"""
+sir="ana"
+i=-1
+sirog=""
+while (i>=-len(sir)):
+    sirog+=sir[i]
+    i+=-1
+print (sirog)
+def op(sir1,sir2):
+    if(sir1[len(sir1)-1]!=sir2[0]):
+        return (sir1+sir2)
+    else:
+        sirf=""
+        for ch in sir1:
+            if (ch in sir2):
+                pass
+            else:
+                sirf+=ch
+        for ch in sir2:
+            if (ch in sir1):
+                pass
+            else:
+                sirf+=ch
+    return sirf
+print (op(sir,sirog),op(sirrog,sir)
+if (len(op(sir,sirog))>len(op(sirog,sir))):
+    print (op(sir,sirog)
+else:
+    print (op(sirog,sir))
+"""

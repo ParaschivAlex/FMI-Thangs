@@ -1,0 +1,362 @@
+#1
+"""
+f=open('tis.txt')
+sir=f.read()
+i=0
+nr=1
+lista_oameni=[]
+while (i<len(sir)):
+    if (i==0):
+        k=i
+    if (sir[i]==' '):
+        lista_oameni.append((int(sir[k:i]),nr))
+        nr+=1
+        k=i+1
+    if (i==len(sir)-1):
+        lista_oameni.append((int(sir[k:i+1]),nr))
+    i+=1
+print (lista_oameni)
+def afisare_timpi_servire(*lista_oameni):
+    timp_servire = 0
+    nr_oameni=0
+    timp_asteptare=0
+    for (k,v) in lista_oameni:
+        print (v,k,timp_servire,end=' ')
+        print()
+        nr_oameni+=1
+        timp_servire+=k
+        timp_asteptare+=timp_servire
+    return timp_asteptare/(nr_oameni)
+
+print (afisare_timpi_servire(*lista_oameni))
+lista_oameni.sort(key=lambda tup:tup[0])
+print (afisare_timpi_servire(*lista_oameni))
+"""
+#2
+"""
+lista_spectacole=[]
+f_citire=open('spectacole.txt')
+f_scriere=open('programare.txt','w')
+with open('spectacole.txt') as f:
+    sir=f_citire.readline()
+    while (sir):
+        i=0
+        ora_inceput=''
+        ora_final=''
+        nume_spectacol=''
+        while (i<len(sir)):
+            if (i==0):
+                k=i
+            if (sir[i]=='-'):
+                ora_inceput=sir[k:i]
+                k=i+1
+            if (sir[i]==' ' and sir[i-1].isdecimal()):
+                ora_final=sir[k:i]
+                k=i+1
+            if (i==len(sir)-1):
+                nume_spectacol=sir[k:i]
+            i+=1
+        lista_spectacole.append((ora_inceput, ora_final, nume_spectacol))
+        sir=f_citire.readline()
+    lista_spectacole.append((ora_inceput,ora_final,nume_spectacol))
+print (lista_spectacole)
+lista_spectacole.sort(key=lambda tup:tup[1])
+print (lista_spectacole)
+ora_curenta=lista_spectacole[0][1]
+for i in range (len(lista_spectacole[0])):
+    f_scriere.write(lista_spectacole[0][i])
+    if (i==0):
+        f_scriere.write('-')
+    else:
+        f_scriere.write(' ')
+f_scriere.write('\n')
+for x in lista_spectacole:
+    if (x[0]>ora_curenta):
+        f_scriere.write(x[0])
+        f_scriere.write('-')
+        f_scriere.write(x[1])
+        f_scriere.write(' ')
+        f_scriere.write(x[2])
+        f_scriere.write('\n')
+        ora_curenta=x[1]
+"""
+#3
+"""
+f_citire=open('cuburi.txt')
+nr_cuburi=0
+f_scriere=open('turn.txt','w')
+cuburi=[]
+sir=f_citire.readline()
+nr_cuburi=int(sir)
+sir=f_citire.readline()
+i=0
+while (sir):
+    i=0
+    while (sir[i]!=' '):
+        i+=1
+    if (sir[len(sir) - 1] != '\n'):
+        cuburi.append((int(sir[0:i]), sir[2:len(sir)]))
+    else:
+        cuburi.append((int(sir[0:i]), sir[2:len(sir) - 1]))
+    sir = f_citire.readline()
+print (cuburi)
+cuburi.sort(key=lambda tup:tup[0])
+cuburi.sort(reverse=True)
+print (cuburi)
+culoare_curenta=0
+latura_curenta=cuburi[0][0]+1
+for latura,culoare in cuburi:
+    if (latura<latura_curenta):
+        if (culoare!=culoare_curenta):
+            f_scriere.write(str(latura))
+            f_scriere.write(' ')
+            f_scriere.write(culoare)
+            f_scriere.write('\n')
+            latura_curenta=latura
+            culoare_curenta=culoare
+"""
+#4
+"""
+f_citire=open('bani.txt')
+f_scriere=open('plata.txt','w')
+lista_bancnote=[]
+sir=f_citire.readline()
+i=0
+while (i<len(sir)):
+    if (i==0):
+        k=i
+    if (sir[i]==' '):
+        lista_bancnote.append(int(sir[k:i]))
+        k=i
+    if (i==len(sir)-1):
+        lista_bancnote.append(int(sir[k:i+1]))
+    i+=1
+suma_necesara=f_citire.readline()
+print(lista_bancnote)
+suma_actuala=0
+lista_bancnote.sort(reverse=True)
+print (lista_bancnote)
+f_scriere.write(str(suma_necesara))
+f_scriere.write(' =')
+i=0
+while (suma_necesara!=suma_actuala and i<7):
+    nr_banc=0
+    while (lista_bancnote[i]*(nr_banc+1)+suma_actuala<=int(suma_necesara)):
+        nr_banc+=1
+    print (nr_banc)
+    suma_actuala+=lista_bancnote[i]*(nr_banc)
+    if (suma_actuala!=int(suma_necesara) and nr_banc!=0):
+        f_scriere.write(str(lista_bancnote[i]))
+        f_scriere.write('*')
+        f_scriere.write(str(nr_banc))
+        f_scriere.write(' + ')
+    elif (suma_actuala==int(suma_necesara)):
+        f_scriere.write(str(lista_bancnote[i]))
+        f_scriere.write('*')
+        f_scriere.write(str(nr_banc))
+    i+=1
+"""
+#5
+def afisare(durata_limita):
+    timp_curent=0
+    intarziere_maxima=0
+    f_scriere = open('intarzieri.txt', 'w')
+    for x in durata_limita:
+        f_scriere.write('(')
+        f_scriere.write(str(timp_curent))
+        f_scriere.write(' --> ')
+        timp_curent+=x[0]
+        f_scriere.write(str(timp_curent))
+        f_scriere.write(')   ')
+        f_scriere.write(str(x[1]))
+        f_scriere.write('   ')
+        if (timp_curent-x[1]>0):
+            f_scriere.write(str(timp_curent-x[1]))
+        else:
+            f_scriere.write('0')
+        f_scriere.write('\n')
+        if (timp_curent-x[1]>intarziere_maxima):
+            intarziere_maxima=timp_curent-x[1]
+    f_scriere.write('Intarziere maxima: ')
+    f_scriere.write(str(intarziere_maxima))
+    f_scriere.close()
+def sortare(t):
+    return t[1]
+f_citire=open('activitati.txt')
+durata_limita=[]
+nr_activitati=int(f_citire.readline())
+sir=f_citire.readline()
+durata=0
+timp_limita=0
+while (sir):
+    i=0
+    durata=0
+    while (i<len(sir)):
+        if (i==0):
+            k=i
+        if (sir[i]==' '):
+            if (k!=i):
+                durata=int(sir[k:i])
+            else:
+                durata=int(sir[k:i+1])
+            k=i+1
+        if (durata!=0):
+            if (sir[len(sir)-1]!='\n'):
+                timp_limita=int(sir[k:len(sir)])
+            else:
+                timp_limita=int(sir[k:len(sir)-1])
+        i+=1
+    durata_limita.append((durata,timp_limita))
+    sir=f_citire.readline()
+print (durata_limita)
+durata_limita.sort(key=sortare)
+print (durata_limita)
+timp_curent=0
+intarziere_maxima=0
+afisare(durata_limita)
+
+"""
+#6
+"""
+f_citire=open('spectacoleex6.txt')
+f_scriere=open('sali.txt','w')
+inceput_final_nume=[]
+sali=[]
+sir=f_citire.readline()
+while (sir):
+    i=0
+    while (i<len(sir)):
+        if (i==0):
+            k=i
+        if (sir[i]=='-'):
+            ora_inceput=sir[k:i]
+            k=i+1
+        if (sir[i]==' ' and k!=0):
+            ora_sfarsit=sir[k:i]
+            if (sir[len(sir)-1]=='\n'):
+                nume_spectacol=sir[i+1:len(sir)-1]
+            else:
+                nume_spectacol=sir[i+1:len(sir)]
+        i+=1
+    inceput_final_nume.append((ora_inceput,ora_sfarsit,nume_spectacol))
+    sir=f_citire.readline()
+print (inceput_final_nume)
+def sortare(t):
+    return t[0]
+inceput_final_nume.sort(key=sortare)
+print (inceput_final_nume)
+for spectacol in inceput_final_nume:
+    k=1
+    for i in range (len(sali)):
+        if (spectacol[0]>=sali[i][0]):
+            sali[i].append(spectacol)
+            sali[i][0]=spectacol[1]
+            k=0
+            break
+    if (k==1):
+        sali.append([spectacol[1],spectacol])
+print (sali)
+f_scriere.write(str(len(sali)))
+f_scriere.write('\n')
+for x in sali:
+    for i in range (1,len(x)):
+        f_scriere.write(str(x[i]))
+    f_scriere.write('\n')
+"""
+#7
+"""
+valoare_greutate=[]
+f_citire=open('obiecte.txt')
+f_scriere=open('rucsac.txt','w')
+nr_obiecte=int(f_citire.readline())
+sir=f_citire.readline()
+while (sir):
+    i=0
+    if (sir[len(sir)-1]=='\n'):
+        while (i<len(sir)):
+            if (i==0):
+                k=i
+            if (sir[i]==' '):
+                valoare_greutate.append((int(sir[k:i]),int(sir[i+1:len(sir)-1])))
+            i+=1
+    else:
+        greutate_ghiozdan=int(sir[0:len(sir)])
+    sir=f_citire.readline()
+print (valoare_greutate)
+def sortare(t):
+    return t[0]/t[1]
+valoare_greutate.sort(key=sortare,reverse=True)
+print (valoare_greutate)
+greutate_actuala=0
+valoare_ghiozdan=0
+i=0
+f_scriere.write(str(greutate_ghiozdan))
+f_scriere.write(' = ')
+for valoare,greutate in valoare_greutate:
+    if (greutate_actuala+greutate<greutate_ghiozdan):
+        greutate_actuala+=greutate
+        f_scriere.write(str(greutate))
+        f_scriere.write(' + ')
+    elif (greutate_actuala+greutate==greutate_ghiozdan):
+        greutate_actuala+=greutate
+        f_scriere.write(str(greutate))
+        break
+    elif (greutate_actuala+greutate>greutate_ghiozdan):
+        print (greutate)
+        print (greutate_ghiozdan-greutate_actuala)
+        f_scriere.write(str((greutate_ghiozdan-greutate_actuala)/greutate))
+        f_scriere.write('*')
+        f_scriere.write(str(greutate))
+        break
+"""
+#8
+"""
+lista_proiecte=[]
+f_citire=open('proiecte.txt')
+f_scriere=open('profit.txt','w')
+sir=f_citire.readline()
+while (sir):
+    i=0
+    while (i<len(sir)):
+        if (i==0):
+            k=i
+        if (sir[i]==' ' and k==0):
+            nume=sir[k:i]
+            k=i
+        if (sir[i]==' ' and k!=0):
+            limita=sir[k:i]
+            if (sir[len(sir)-1]=="\n"):
+                profit=sir[i+1:len(sir)-1]
+            else:
+                profit=sir[i+1:len(sir)]
+        i+=1
+    sir=f_citire.readline()
+    lista_proiecte.append((nume,int(limita),int(profit)))
+print (lista_proiecte)
+def sortare(t):
+    return t[2]
+lista_proiecte.sort(key=sortare,reverse=True)
+print (lista_proiecte)
+ora_actuala=0
+lista_profite=[]
+f_scriere.write('proiecte:')
+for x in lista_proiecte:
+    if (x[1]>ora_actuala):
+        ora_actuala+=1
+        f_scriere.write(x[0])
+        f_scriere.write(',')
+        lista_profite.append(x[2])
+f_scriere.write('\n')
+f_scriere.write('profit:')
+suma=0
+for x in lista_profite:
+    if (lista_profite.index(x)!=len(lista_profite)-1):
+        f_scriere.write(str(x))
+        f_scriere.write(' + ')
+        suma+=x
+    else:
+        f_scriere.write(str(x))
+        suma+=x
+        f_scriere.write('= ')
+        f_scriere.write(str(suma))
+"""

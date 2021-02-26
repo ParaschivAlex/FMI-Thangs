@@ -1,0 +1,345 @@
+#1
+"""
+l=[]
+n=int(input())
+for i in range (n):
+    e=int(input())
+    l.append(e)
+if (l.count(max(l))==1):
+    print(list.pop(l.index(max(list))))
+    print(list.pop(l.index(max(list))))
+else:
+    l.sort()
+    print (max(l))
+    for i in range(n-1,0,-1):
+        if (l[i]!=max(l)):
+            print(l[i])
+            break
+"""
+"""
+sir="ana ana are mere mere mere are"
+d={}
+i=0
+while (i<len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        k=i
+    if (i!=len(sir)-1):
+        if (sir[i+1]==" "):
+            if (d.get(sir[k:i+1])==None):
+                d[sir[k:i+1]]=1
+            elif (d.get(sir[k:i+1])!=None):
+                d[sir[k:i+1]]+=1
+    else:
+        if (d.get(sir[k:i + 1]) == None):
+            d.update({sir[k:i+1]:1})
+        elif (d.get(sir[k:i + 1]) != None):
+            d[sir[k:i+1]] += 1
+    i+=1
+s=""
+n=""
+print (d)
+print(max(d,key = lambda x: d.get(x)))
+print(min(d,key = lambda x: d.get(x)))
+for k,v in d.items():
+    if(d[k]==max(d,key = lambda x: d.get(x))):
+        s=min(s,k)
+    if(d[k]==min(d,key = lambda x: d.get(x))):
+        n=min(n,k)
+print(s,n)
+"""
+#3
+"""
+sir="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id nibh tortor id aliquet lectus proin nibh. Erat pellentesque adipiscing commodo elit at imperdiet dui. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Dignissim sodales ut eu sem integer. Feugiat nibh sed pulvinar proin. Id diam vel quam elementum pulvinar. Libero volutpat sed cras ornare arcu dui vivamus. Rhoncus urna neque viverra justo. Vitae auctor eu augue ut lectus arcu."
+i=0
+d={}
+for ch in sir:
+   if(d.get(ch)==None):
+       d[ch]=1
+   else:
+       d[ch]+=1
+print(d)
+"""
+#4
+"""
+d1={"mere":5,"pere":4,"rosii":3}
+d2={"rosii":3,"castraveti":4,"broccoli":6}
+d={}
+for k,v in d1.items():
+    if(d.get(k)==None):
+        d[k]=d1[k]
+    else:
+        d[k]+=d1[k]
+for k,v in d2.items():
+    if (d.get(k) == None):
+        d[k] = d2[k]
+    else:
+        d[k] += d2[k]
+print (d)
+"""
+#5
+"""
+sir= "Langa o cabana, stand pe o banca, un bacan a spus un banc bun."
+cuv="bacan"
+marius=0
+for i in range (len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        k=i
+    if (sir[i] not in"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"):
+        log=1
+        j=k
+        while (j<i):
+            if (sir[j] not in cuv):
+                log=0
+            j+=1
+        if (log==1):
+            print(sir[k:i])
+            marius=1
+if (not marius):
+    print("ghinion")
+#6
+"""
+"""
+sir="mere pere droguri mofturi"
+rime={}
+for i in range(len(sir)):
+    if (i==0 or sir[i-1]==" "):
+        k=i
+    if (sir[i]==" "):
+        if (rime.get(sir[i-2:i])==None):
+            rime[sir[i-2:i]]=[sir[k:i]]
+        else:
+            rime[sir[i-2:i]].append(sir[k:i])
+    if (i==len(sir)-1):
+        if (rime.get(sir[i-1:i+1])==None):
+            rime[sir[i-1:i+1]]=[sir[k:i+1]]
+        else:
+            rime[sir[i-1:i+1]].append(sir[k:i+1])
+final={}
+print (rime)
+for j,v in rime.items():
+    if (len(rime[j])>=2):
+        final[j]=v
+print (final)
+"""
+#7
+"""
+f=open ("cheltuieli.txt")
+sir=f.read()
+i=0
+suma=0
+while (i<len(sir)-4):
+    if (i==0 or sir[i-1]==" "):
+        k=i
+    if (sir[i]==" "):
+        if ('.' not in sir[k:i]):
+            if (sir[k:i].isdecimal()):
+                if (sir[i+1:i+4]=="RON"):
+                    suma+=int(sir[k:i])
+        else:
+            x=sir[k:i].split(".")
+            if (x[0].isdecimal() and x[1].isdecimal()):
+                if (sir[i+1:i+4]=="RON"):
+                    suma+=float(sir[k:i])
+    i+=1
+print (suma)
+"""
+#8
+"""
+d={}
+with open("inventar.txt") as f:
+    sir=f.readline()
+    i=0
+    while (sir):
+        i=0
+        sirc=""
+        sact=set()
+        log=1
+        while (log==1):
+            if(sir[i] in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"):
+                pass
+            else:
+                sirc=sir[0:i]
+                log=0
+            i+=1
+        while (i<len(sir)):
+            if (sir[i].isdecimal() and  not sir[i-1].isdecimal()):
+                k=i
+            if (sir[i]==" " or i==len(sir)-1):
+                if (k!=i):
+                    sact.add(sir[k:i])
+
+                else:
+                    sact.add(sir[k:i+1])
+
+            i+=1
+        d[sirc]=sact
+        sir=f.readline()
+    print(sir)
+print (d)
+setintersectie=set()
+for k in d.values():
+    if (len(setintersectie)==0):
+        setintersectie=k
+    else:
+        setintersectie=setintersectie&k
+print(setintersectie, "*****")
+setreuniune=set()
+for k in d.values():
+    setintersectie=setintersectie|k
+print (setintersectie)
+for k1,v1 in d.items():
+    s=v1
+    for k2,v2 in d.items():
+        if (k1!=k2):
+            s=s-v2
+    print(k1,s,end=' ')
+"""
+#9
+"""
+sir="run: to go faster than a walk : to go steadily by springing steps : to take part into a contest - ~ a marathon : to move at a fast gallop - he may occasionally run to and from work : flee, retreat, escape - drop the gun and run : to go without restraint : move freely about at will - let chickens ~ loose : consort - we run with our group \n" + "dog: canid wolves, foxes, and other dogs especially : a highly variable domestic mammal : a pet ~ : fellow, chap, a lazy person - you lucky dog \n" + "break: break a/the record to do something better than the best known speed, time, number, etc. previously achieved : to fail to keep a law, rule, or promise = ~ the law : These enzymes break down food in the stomach (= cause food to separate into smaller pieces). I needed something to break the monotony of my typing job. The phone rang, as to break my concentration. To ~ (of a storm) = to start suddenly: We arrived just as a storm was breaking. \n"
+i=0
+l=[]
+while (i<len(sir)):
+    if (i==0):
+        t=tuple()
+        cuv=""
+        nr=0
+        k=i
+        while(sir[i]!=":"):
+            i+=1
+        cuv=sir[k:i]
+        k=i
+    if (sir[i]=='\n'):
+        t=(cuv,nr)
+        l.append(t)
+        t=tuple()
+        cuv=""
+        nr=0
+        k=i+1
+        if (len(sir)-i>4):
+            while (sir[i]!=":"):
+                i+=1
+            cuv=sir[k:i]
+    if (sir[i-1]==" "):
+        inceput=i
+    if (sir[i]==" " and sir [i-1]!=':'):
+        final=i
+        if (sir[inceput:final]==cuv):
+            nr+=1
+    if (sir[i]=='~'):
+        nr+=1
+    i+=1
+print (l)
+"""
+#10
+"""
+l=[]
+i=0
+while (1):
+    scor=int(input())
+    if (scor==-1):
+        break
+    i+=1
+    nume=input()
+    t=(scor,nume,i)
+    l.append(t)
+print(l)
+s=set()
+for k in l:
+    s.add(k[0])
+print(s)
+d={}
+for k in l:
+    if (d.get(k[0])==None):
+        d[k[0]]=[]
+        d[k[0]].append((k[1],k[2]))
+    else:
+        d[k[0]].append((k[1],k[2]))
+print (d)
+"""
+#11
+""""""
+lista_poz=[]
+N=5
+def dreapta(i,j):
+    if (j!=N-1):
+        misc=0
+        while (((i,j+1)not in lista_poz or (i,j+1) in lista_poz and lista_poz[lista_poz.index((i,j+1))][0]!=i and lista_poz[lista_poz.index((i,j+1))][1]!=j) and j!=N-1):
+            j+=1
+            lista_poz.append((i,j))
+            misc+=1
+        return [misc,i,j]
+    return [0,i,j]
+def jos(i,j):
+    if (i!=N-1):
+        misc=0
+        while (((i+1,j) not in lista_poz or (i,j+1) in lista_poz and lista_poz[lista_poz.index((i,j+1))][0]!=i and lista_poz[lista_poz.index((i,j+1))][1]!=j) and i!=N-1):
+            i+=1
+            lista_poz.append(((i,j)))
+            misc+=1
+        return  [misc,i,j]
+    return [0,i,j]
+def stanga(i,j):
+    if(j!=0):
+        misc=0
+        while(((i,j-1)not in lista_poz or (i,j+1) in lista_poz and lista_poz[lista_poz.index((i,j+1))][0]!=i and lista_poz[lista_poz.index((i,j+1))][1]!=j) and j!=0):
+            j-=1
+            lista_poz.append((i,j))
+            misc+=1
+        return  [misc,i,j]
+    return [0,i,j]
+def sus(i,j):
+    if (i!=0):
+        misc=0
+        while (((i-1,j) not in lista_poz or (i,j+1) in lista_poz and lista_poz[lista_poz.index((i,j+1))][0]!=i and lista_poz[lista_poz.index((i,j+1))][1]!=j) and i!=0):
+            i -=1
+            lista_poz.append((i, j))
+            misc+=1
+        return [misc,i,j]
+    return [0,i,j]
+matrice=[]
+for i in range(N):
+    a=[]
+    for j in range (N):
+        a.append((i)*5+j+1)
+    matrice.append(a)
+for i in range(N):
+    for j in range (N):
+        print(matrice[i][j],end=' ')
+    print()
+a=0
+b=0
+nr=0
+k=0
+lista_poz.append((0,0))
+while (nr<N*N):
+    l=dreapta(a,b)
+    k=l[0]
+    a=l[1]
+    b=l[2]
+    del l
+    l=[]
+    nr+=k
+    l=jos(a,b)
+    k = l[0]
+    a = l[1]
+    b = l[2]
+    print (a,b)
+    del l
+    l = []
+    nr+=k
+    l=stanga(a,b)
+    k = l[0]
+    a = l[1]
+    b = l[2]
+    del l
+    l = []
+    nr+=k
+    l=sus(a,b)
+    k = l[0]
+    a = l[1]
+    b = l[2]
+    del l
+    l = []
+    nr+=k
+print(lista_poz)
